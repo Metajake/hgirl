@@ -1,0 +1,34 @@
+{ "frames": {
+   "girl_03.ase": {
+    "frame": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 200
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.1.13",
+  "image": "/Users/jn/Code/phaser/girl/girl_sit.png",
+  "format": "RGBA8888",
+  "size": { "w": 64, "h": 64 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "ground shadow", "opacity": 255, "blendMode": "normal" },
+   { "name": "rear leg", "opacity": 255, "blendMode": "normal" },
+   { "name": "front leg", "opacity": 255, "blendMode": "normal" },
+   { "name": "torso", "opacity": 255, "blendMode": "normal" },
+   { "name": "rear arm", "opacity": 255, "blendMode": "normal" },
+   { "name": "front arm", "opacity": 255, "blendMode": "normal" },
+   { "name": "head", "opacity": 255, "blendMode": "normal" },
+   { "name": "boobs", "opacity": 255, "blendMode": "normal" },
+   { "name": "hair2", "opacity": 255, "blendMode": "normal" },
+   { "name": "front  hand", "opacity": 255, "blendMode": "normal" },
+   { "name": "front front hand", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}
