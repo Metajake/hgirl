@@ -39,10 +39,11 @@ function create() {
     // girlIdle = game.add.sprite(40, 40, 'girlIdle');
     // girlWalk = game.add.sprite(40, 40, 'girlWalk');
     // girlWalk.visible = false;
-    girl.sprite = game.add.sprite(0,0, 'girl');
-    girl.sit = game.make.sprite(0,0, 'girlSit');
-    girl.sit.visible = false;
-    girl.state = 'idle';
+    girl_sprite = game.add.sprite(0,0, 'girl');
+    girl_sit = game.make.sprite(0,0, 'girlSit');
+    girl_sit.visible = false;
+    girl_state = 'idle';
+    girl_two_keys_down=false;
 
     // cl(game.add)
     game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -60,31 +61,31 @@ function create() {
     // game.cache.addBitmapData('blueShade', bmd);
     // upper = game.add.sprite(8, 8, game.cache.getBitmapData('blueShade'));
 
-    game.physics.arcade.enable(girl.sprite);
-    game.physics.arcade.enable(girl.sit);
-    girl.sprite.body.collideWorldBounds = true;
+    game.physics.arcade.enable(girl_sprite);
+    game.physics.arcade.enable(girl_sit);
+    girl_sprite.body.collideWorldBounds = true;
     // game.physics.arcade.enable(upper);
 
-    girl.group = game.add.group();
-    girl.group.x = 100;
-    girl.group.y = 200;
+    girl_group = game.add.group();
+    girl_group.x = 100;
+    girl_group.y = 200;
     // girlGroup.enableBodyDebug = true;
     // girlGroup.enableBody = true;
     // girlGroup.physicsBodyType = Phaser.Physics.ARCADE;
-    girl.group.add(girl.sprite);
-    girl.group.add(girl.sit);
+    girl_group.add(girl_sprite);
+    girl_group.add(girl_sit);
     // girlGroup.x = 100;
     // cl(girlGroup.x)
 
-    girl.sprite.anchor.setTo(.5,.5);
-    girl.sit.anchor.setTo(.5,.5);
-    girl.facing = 'right';
-    girl.group.scale.setTo(3);
+    girl_sprite.anchor.setTo(.5,.5);
+    girl_sit.anchor.setTo(.5,.5);
+    girl_facing = 'right';
+    girl_group.scale.setTo(3);
 
     // Log Spritesheet Json object
     // girlIdleJson = game.cache.getJSON('girl2Json');
     // girlWalkJson = game.cache.getJSON('girlWalkJson');
-    girl.json = game.cache.getJSON('girlJson');
+    girl_json = game.cache.getJSON('girlJson');
     // cl(girlIdleJson.frames)
 
     //Example of For In {object}
@@ -98,27 +99,27 @@ function create() {
 
     // var girlIdleAnimArray = getAnimArray(girlIdleJson);
     // var girlWalkAnimArray = getAnimArray(girlWalkJson);
-    var girlIdleArray = getAnimArray(girl.json,[0,1,2,3,4,5,6]);
-    var girlWalkArray = getAnimArray(girl.json,[12,13,14,15,16,17]);
-    var girlAccelArray = getAnimArray(girl.json,[8,9,10,11]);
-    var girlSlowAccelArray = getAnimArray(girl.json,[8,11]);
-    var girlDecelArray = getAnimArray(girl.json,[11,8]);
-    var girlBounceArray = getAnimArray(girl.json,[18,19,20,21,22,23,24]);
+    var girlIdleArray = getAnimArray(girl_json,[0,1,2,3,4,5,6]);
+    var girlWalkArray = getAnimArray(girl_json,[12,13,14,15,16,17]);
+    var girlAccelArray = getAnimArray(girl_json,[8,9,10,11]);
+    var girlSlowAccelArray = getAnimArray(girl_json,[8,11]);
+    var girlDecelArray = getAnimArray(girl_json,[11,8]);
+    var girlBounceArray = getAnimArray(girl_json,[18,19,20,21,22,23,24]);
     // cl(girlAccelArray);
 
     // idle = girlIdle.animations.add('idle');
     // idle2 = girlIdle.animations.add('idle2',girlIdleAnimArray,40, true);
     // walk = girlWalk.animations.add('walk',girlWalkAnimArray,40, true);
-    girl.idle = girl.sprite.animations.add('idle', girlIdleArray,/*FPS speed*/ 40,/*loop*/ true);
-    girl.walk = girl.sprite.animations.add('walk', girlWalkArray,/*FPS speed*/ 40,/*loop*/ true);
-    girl.accel = girl.sprite.animations.add('accel', girlAccelArray,/*FPS speed*/ 40);
-    girl.decel = girl.sprite.animations.add('decel', girlDecelArray,/*FPS speed*/ 40);
-    girl.bounce = girl.sprite.animations.add('bounce', girlBounceArray, /*FPS speed*/ 40);
+    girl_idle = girl_sprite.animations.add('idle', girlIdleArray,/*FPS speed*/ 40,/*loop*/ true);
+    girl_walk = girl_sprite.animations.add('walk', girlWalkArray,/*FPS speed*/ 40,/*loop*/ true);
+    girl_accel = girl_sprite.animations.add('accel', girlAccelArray,/*FPS speed*/ 40);
+    girl_decel = girl_sprite.animations.add('decel', girlDecelArray,/*FPS speed*/ 40);
+    girl_bounce = girl_sprite.animations.add('bounce', girlBounceArray, /*FPS speed*/ 40);
 
     //Test OnLoop
     // girlIdle.onLoop.add(function(){cl("Idle Loop")}, this);
 
-    girl.idle.play();
+    girl_idle.play();
 
     var arrr = [0,"yo","timmy",null,undefined,5,["yo","yo"]]
     cl("Rand: "+game.rnd.pick(arrr))
@@ -135,51 +136,51 @@ function create() {
     // game.add.tween(sprite).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
 
     keyRight.onDown.add(function(){
-      girl.accel.onComplete.add(function(){girl.walk.play();}, this);
-      girl.accel.play();
+      girl_accel.onComplete.add(function(){girl_walk.play();}, this);
+      girl_accel.play();
     });
     keyRight.onUp.add(function(){
       if(!keyLeft.isDown){
-        girl.decel.onComplete.add(function(){
-          girl.idle.play();
+        girl_decel.onComplete.add(function(){
+          girl_idle.play();
         }, this);
-        girl.decel.play();
+        girl_decel.play();
       }
     });
     keyLeft.onDown.add(function(){
-      girl.accel.onComplete.add(function(){girl.walk.play();}, this);
-      girl.accel.play();
+      girl_accel.onComplete.add(function(){girl_walk.play();}, this);
+      girl_accel.play();
     });
     keyLeft.onUp.add(function(){
       if(!keyRight.isDown){
-        girl.decel.onComplete.add(function(){
-          girl.idle.play();
+        girl_decel.onComplete.add(function(){
+          girl_idle.play();
         }, this);
-        girl.decel.play();
+        girl_decel.play();
       }
     });
     keyB.onDown.add(function(){
-      girl.bounce.onComplete.add(function(){
+      girl_bounce.onComplete.add(function(){
         if(!keyB.isDown){
-          girl.idle.play();
+          girl_idle.play();
         }else{
-          girl.bounce.play();
+          girl_bounce.play();
         }
       });
-      girl.bounce.play();
+      girl_bounce.play();
     });
     keyI.onDown.add(function(){
-      if(girl.state !== 'seated'){
-        girl.state = 'seated';
-        girl.sprite.visible = false;
-        girl.sit.visible = true;
+      if(girl_state !== 'seated'){
+        girl_state = 'seated';
+        girl_sprite.visible = false;
+        girl_sit.visible = true;
       }else{
-        girl.state = 'idle';
-        girl.sprite.visible = true;
-        girl.sit.visible = false;
+        girl_state = 'idle';
+        girl_sprite.visible = true;
+        girl_sit.visible = false;
       }
 
-      girl.idle.play();
+      girl_idle.play();
     });
 }
 
