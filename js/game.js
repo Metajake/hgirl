@@ -1,6 +1,6 @@
 var game = new Phaser.Game(
-  800,
-  600,
+  1200,
+  700,
   Phaser.CANVAS,
   'main',
   { preload: preload, create: create, update: update, render:render },
@@ -33,6 +33,7 @@ function create() {
     keyLeft = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
     keyB = game.input.keyboard.addKey(Phaser.Keyboard.B);
     keyI = game.input.keyboard.addKey(Phaser.Keyboard.I);
+    keyUp = game.input.keyboard.addKey(Phaser.Keyboard.UP);
 
     touch = game.input.addPointer();
 
@@ -47,6 +48,7 @@ function create() {
 
     // cl(game.add)
     game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.arcade.gravity.y = 100;
 
     // CODE FOR Fillsed bitmapData Square
     // var bmd = game.add.bitmapData(86, 86);
@@ -63,12 +65,14 @@ function create() {
 
     game.physics.arcade.enable(girl_sprite);
     game.physics.arcade.enable(girl_sit);
+
     girl_sprite.body.collideWorldBounds = true;
+
     // game.physics.arcade.enable(upper);
 
     girl_group = game.add.group();
     girl_group.x = 100;
-    girl_group.y = 200;
+    girl_group.y = 600;
     // girlGroup.enableBodyDebug = true;
     // girlGroup.enableBody = true;
     // girlGroup.physicsBodyType = Phaser.Physics.ARCADE;
@@ -76,12 +80,13 @@ function create() {
     girl_group.add(girl_sit);
     // girlGroup.x = 100;
     // cl(girlGroup.x)
-
+    
     girl_sprite.anchor.setTo(.5,.5);
     girl_sit.anchor.setTo(.5,.5);
     girl_facing = 'right';
     girl_group.scale.setTo(3);
-
+    girl_sprite.body.setSize(66, 130,2, 0);
+    
     // Log Spritesheet Json object
     // girlIdleJson = game.cache.getJSON('girl2Json');
     // girlWalkJson = game.cache.getJSON('girlWalkJson');
@@ -135,12 +140,31 @@ function create() {
     // tween.to({x:7}, 1000, 'Linear', true, 0);
     // game.add.tween(sprite).to({ x: game.width }, 10000, Phaser.Easing.Linear.None, true);
 
+keyUp.onDown.add(function(){
+      
+        girl_bounce.onComplete.add(function(){
+        if(girl_sprite.body.y>=569 ){
+          
+if(cursors.left.isDown || cursors.right.isDown  )
+{girl_accel.play();}else{girl_idle.play();}
+
+        }else{
+          girl_bounce.play();
+        }
+      });
+      girl_bounce.play();
+    });
+    
+
     keyRight.onDown.add(function(){
+      if(girl_sprite.body.y>=569){
       girl_accel.onComplete.add(function(){girl_walk.play();}, this);
       girl_accel.play();
+    }
+
     });
     keyRight.onUp.add(function(){
-      if(!keyLeft.isDown){
+      if(!keyLeft.isDown && girl_sprite.body.y>=569){
         girl_decel.onComplete.add(function(){
           girl_idle.play();
         }, this);
@@ -148,11 +172,13 @@ function create() {
       }
     });
     keyLeft.onDown.add(function(){
+      if(girl_sprite.body.y>=569){
       girl_accel.onComplete.add(function(){girl_walk.play();}, this);
       girl_accel.play();
+    }
     });
     keyLeft.onUp.add(function(){
-      if(!keyRight.isDown){
+      if(!keyRight.isDown&& girl_sprite.body.y>=569){
         girl_decel.onComplete.add(function(){
           girl_idle.play();
         }, this);

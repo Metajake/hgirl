@@ -1,6 +1,8 @@
 
 function update_function(){
 
+console.log(girl_sprite.body.y);
+
   if(game.input.pointer1.isDown){
     girl_bounce.onComplete.add(function(){
       if(!keyB.isDown){
@@ -11,6 +13,14 @@ function update_function(){
     });
     girl_bounce.play();
   }
+
+
+if(cursors.up.isDown && girl_sprite.body.y>=569 ){
+  girl_sprite.body.velocity.y=-80;
+}
+
+
+
   if(cursors.left.isDown && cursors.right.isDown )
 {
     if(girl_two_keys_down==false)
@@ -33,7 +43,7 @@ function update_function(){
   
 }
   else if(cursors.right.isDown){
-    
+   
 if(girl_two_keys_down==true)
   {girl_sprite.scale.x = +1;}
 
