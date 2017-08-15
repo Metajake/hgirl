@@ -16,6 +16,7 @@ function preload() {
  }
 function create() {
   
+   
     game.forceSingleUpdate = true
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 100;
@@ -25,13 +26,17 @@ function create() {
 }
 
 function update(){
- 
 
+
+girl.isOnPlatform();
 girl.jumping();
 girl.walking();
+
 
 }
 function render(){
 
+  game.debug.body(girl.sprite);
+  game.debug.body(level_test.floor);
   game.debug.text("Controls: Left Arrow, Right Arrow, B, I", 32, 32);
 }

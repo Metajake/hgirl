@@ -11,20 +11,26 @@
     girl.twoKeysDown=false;
     
     game.physics.arcade.enable(girl.sprite);
-    game.physics.arcade.enable(girl.sit);
+    game.physics.arcade.enable(girl.sit);         
 
     girl.group = game.add.group();
     girl.group.x = 100;
-    girl.group.y = 600;
+    girl.group.y = 500;
     girl.group.add(girl.sprite);
     girl.group.add(girl.sit);
+    level_test.layer.add(girl.group);
     
     girl.sprite.anchor.setTo(.5,.5);
     girl.sit.anchor.setTo(.5,.5);
-    girl.facing = 'right';
+    girl.facing = 'right'
     girl.group.scale.setTo(3);
     girl.sprite.body.setSize(66, 130,2, 0);
-    girl.sprite.body.collideWorldBounds = true;
+    girl.onPlatform=true;
+    girl.sprite.body.collideWorldBounds=true;
+
+
+    
+    
     
     girl.json = game.cache.getJSON('girlJson');
    
@@ -44,13 +50,52 @@
     girl_animator.addJumpAnimation();
     girl_animator.addLeftAnimation();
     girl_animator.addRightAnimation();
+    girl.falsecount=0;
+    girl.truecount=0;
+    
+
 
  
+
+ girl.isOnPlatform = function ()
+{
+    plattformCollision= game.physics.arcade.collide(girl.group, level_test.platforms);
+    
+
+if(plattformCollision)
+      {
+        girl.truecount+=1
+        girl.onPlatform=true;
+
+      }
+      else{ 
+        
+        girl.falsecount+=1;
+       }
+    
+
+if(girl.truecount>=3)
+{
+
+girl.onPlatform=true;
+girl.truecount=0;
+girl.falsecount=0;
+}
+
+if( girl.falsecount>=3)
+{
+
+girl.onPlatform=false;
+girl.truecount=0;
+girl.falsecount=0;
+}
+}
+
  girl.jumping = function ()
 {
 
-    if(controls.jump.isDown && girl.sprite.body.y>=569 ){
-  girl.sprite.body.velocity.y=-80;
+    if(controls.jump.isDown && girl.onPlatform==true){
+  girl.sprite.body.velocity.y = -80;
 }
 };
 
@@ -72,7 +117,7 @@ girl.walking = function ()
     controls.two_keys_down=true;
 
 }
-  else if(controls.moveRight.isDown){
+  else if(controls.moveRight.isDown ){
    
 if(controls.two_keys_down==true)
   {girl.sprite.scale.x = +1;}
@@ -84,7 +129,7 @@ if(controls.two_keys_down==true)
  
     girl.group.x += 3;
     controls.two_keys_down=false;
-  }else if(controls.moveLeft.isDown){
+  }else if(controls.moveLeft.isDown  ){
     
 if(controls.two_keys_down==true)
   {girl.sprite.scale.x = -1;}
