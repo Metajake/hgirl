@@ -26,10 +26,11 @@
     girl.group.scale.setTo(3);
     girl.sprite.body.setSize(66, 130,2, 0);
     girl.onPlatform=true;
-    girl.sprite.body.collideWorldBounds=true;
+   
+    level_test.layer.add(girl.group);
 
-
-    
+    girl.jumpHeight=120;
+    girl.speed=1;
     
     
     girl.json = game.cache.getJSON('girlJson');
@@ -50,17 +51,18 @@
     girl_animator.addJumpAnimation();
     girl_animator.addLeftAnimation();
     girl_animator.addRightAnimation();
+   
     girl.falsecount=0;
     girl.truecount=0;
     
-
-
  
 
  girl.isOnPlatform = function ()
 {
     plattformCollision= game.physics.arcade.collide(girl.group, level_test.platforms);
     
+    
+
 
 if(plattformCollision)
       {
@@ -74,7 +76,7 @@ if(plattformCollision)
        }
     
 
-if(girl.truecount>=3)
+if(girl.truecount>=10)
 {
 
 girl.onPlatform=true;
@@ -82,7 +84,7 @@ girl.truecount=0;
 girl.falsecount=0;
 }
 
-if( girl.falsecount>=3)
+if( girl.falsecount>=10)
 {
 
 girl.onPlatform=false;
@@ -91,12 +93,22 @@ girl.falsecount=0;
 }
 }
 
+
+
+
+
  girl.jumping = function ()
 {
+  girl_animator.fixJumpAnimation();
 
     if(controls.jump.isDown && girl.onPlatform==true){
-  girl.sprite.body.velocity.y = -80;
+  girl.sprite.body.velocity.y = -girl.jumpHeight;
 }
+
+//if(girl.onPlatform==false)
+ // {girl.speed=1.5;}else{girl.speed=1;}
+
+
 };
 
 girl.walking = function ()
@@ -110,9 +122,9 @@ girl.walking = function ()
    if(girl.facing == 'right'){girl.sprite.scale.x = -1;}
    }
 
-  if(girl.facing == 'left'){girl.group.x += 3;}
+  if(girl.facing == 'left'){girl.group.x += 3*girl.speed;}
 
-   if(girl.facing == 'right'){girl.group.x -= 3;}
+   if(girl.facing == 'right'){girl.group.x -= 3*girl.speed;}
 
     controls.two_keys_down=true;
 
@@ -127,7 +139,7 @@ if(controls.two_keys_down==true)
       girl.facing = 'right';
     }
  
-    girl.group.x += 3;
+    girl.group.x += 3*girl.speed;
     controls.two_keys_down=false;
   }else if(controls.moveLeft.isDown  ){
     
@@ -139,7 +151,7 @@ if(controls.two_keys_down==true)
       girl.facing = 'left';
     }
 
-    girl.group.x -= 3;
+    girl.group.x -= 3*girl.speed;
     controls.two_keys_down=false;
   }
 };

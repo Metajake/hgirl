@@ -19,7 +19,7 @@ function create() {
    
     game.forceSingleUpdate = true
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.physics.arcade.gravity.y = 100;
+    game.physics.arcade.gravity.y = 110;
     girl_animator.startIdle();
     
 

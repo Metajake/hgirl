@@ -5,7 +5,13 @@
 
 girl_animator.startIdle = function(){
     girl.idle.play();
-}
+};
+
+girl_animator.fixJumpAnimation = function ()
+{
+  if(girl.sprite.animations.currentAnim.name != 'bounce' && girl.onPlatform==false)
+    {girl.bounce.play();}
+};
 
 girl_animator.addJumpAnimation = function (){
 
