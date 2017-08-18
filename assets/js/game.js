@@ -11,27 +11,24 @@ var game = new Phaser.Game(
 function preload() {
 
    asset_loader.loadAssets();
-   
-  
+
+
  }
 function create() {
-  
-   
+
+
     game.forceSingleUpdate = true
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.physics.arcade.gravity.y = 110;
     girl_animator.startIdle();
-    
+
 
 }
 
 function update(){
-
-
-girl.isOnPlatform();
-girl.jumping();
-girl.walking();
-
+  game.physics.arcade.collide(girl.group, level_test.platforms);
+  girl.jumping();
+  girl.walking();
 
 }
 function render(){
@@ -39,4 +36,5 @@ function render(){
   game.debug.body(girl.sprite);
   game.debug.body(level_test.floor);
   game.debug.text("Controls: Left Arrow, Right Arrow, B, I", 32, 32);
+  // game.debug.text(girl.isJumping, 32, 48);
 }
