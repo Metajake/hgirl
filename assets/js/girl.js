@@ -4,10 +4,6 @@ girl.sprite = game.add.sprite(0,0, 'girl');
 girl.sit = game.make.sprite(0,0, 'girlSit');
 girl.sit.visible = false;
 
-girl.state = 'idle';
-
-girl.twoKeysDown=false;
-
 game.physics.arcade.enable(girl.sprite, Phaser.Physics.ARCADE);
 game.physics.arcade.enable(girl.sit, Phaser.Physics.ARCADE);
 
@@ -18,11 +14,14 @@ girl.group.add(girl.sprite);
 girl.group.add(girl.sit);
 level_test.layer.add(girl.group);
 
-girl.sprite.anchor.setTo(.5,.5);
-girl.sit.anchor.setTo(.5,.5);
+
 girl.facing = 'right'
 girl.group.scale.setTo(3);
+girl.sprite.anchor.setTo(.5,.5);
+girl.sit.anchor.setTo(.5,.5);
 girl.sprite.body.setSize(66, 130);
+
+girl.isJumping = false;
 
 level_test.layer.add(girl.group);
 
@@ -47,6 +46,13 @@ girl.bounce = girl.sprite.animations.add('bounce',girl.girlBounceArray, /*FPS sp
 girl_animator.addJumpAnimation();
 girl_animator.addLeftAnimation();
 girl_animator.addRightAnimation();
+
+
+
+
+  
+
+
 
 girl.jumping = function () {
   if(controls.jump.isDown && girl.sprite.body.wasTouching.down){

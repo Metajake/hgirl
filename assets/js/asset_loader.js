@@ -15,15 +15,18 @@
    //load png
     game.load.image('background', 'assets/media/background.png', 1200, 700);
     game.load.image('floor', 'assets/media/floor.png', 1200, 100);
+    game.load.image('pervert', 'assets/media/pervert.png', 1200, 100);
  
  
    //load script
-   
-    game.load.script('frame_converter', 'assets/js/frame_converter.js');
     game.load.script('controls', 'assets/js/controls.js');
+    game.load.script('frame_converter', 'assets/js/frame_converter.js');
     game.load.script('girl_animator', 'assets/js/girl_animator.js');
+    game.load.script('pervert', 'assets/js/pervert.js');
     game.load.script('level_test', 'assets/js/level_test.js');
     game.load.script('girl', 'assets/js/girl.js');
+    
+
 
    
 

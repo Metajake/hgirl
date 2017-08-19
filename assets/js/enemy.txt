@@ -1,0 +1,17 @@
+const girl = new Object(); 
+girl.x = 250;
+
+const Enemy = function(labido){
+	this.alive = true;
+  this.labido = labido;
+  this.yell = function(){
+  	console.log("You're Hot!")
+  };
+}
+
+var enemies = [];
+
+enemy1 = new Enemy(25);
+enemy2 = new Enemy(50);
+
+enemies.push(enemy1)
