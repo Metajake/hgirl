@@ -13,15 +13,20 @@ level_test.background= game.add.sprite(0,0,'background');
 level_test.layer.add(level_test.background);
 level_test.enviroment.add(level_test.background);
 
-level_test.floor= game.add.tileSprite(-600,600,2400, 50,'floor');
+level_test.floor= game.add.tileSprite(-600,GAMEWIN.floorHeight,2400, 50,'floor');
 level_test.layer.add(level_test.floor);
 level_test.enviroment.add(level_test.floor);
 level_test.platforms.add(level_test.floor);
-level_test.floor.body.immovable=true;
-level_test.floor.body.allowGravity=false;
+
+// Necessary to make Platforms Stay in Place
+level_test.floor.body.immovable = true;
+level_test.floor.body.allowGravity = false;
+
+// level_test.floor.body.bounce.y = 0;
 game.physics.arcade.enable(level_test.floor, Phaser.Physics.ARCADE);
 
 level_test.table = game.add.sprite(0,0,'table');
+level_test.table.scale.setTo(3);
 level_test.layer.add(level_test.table);
 level_test.enviroment.add(level_test.table);
 level_test.platforms.add(level_test.table);
