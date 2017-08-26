@@ -7,11 +7,20 @@ level_test.platforms.enableBody = true;
 level_test.layer= game.add.group();
 
 
+// BG 1
+level_test.bg0 = game.add.tileSprite(0,0,GAMEWIN.totalWidth, window.innerHeight, 'bg_space');
+level_test.layer.add(level_test.bg0);
+level_test.enviroment.add(level_test.bg0);
 
+// BG 2
+level_test.bg1 = game.add.tileSprite(0,0,GAMEWIN.totalWidth, GAMEWIN.totalHeight, 'bg_trees');
+level_test.layer.add(level_test.bg1);
+level_test.enviroment.add(level_test.bg1);
 
-level_test.background= game.add.sprite(0,0,'background');
-level_test.layer.add(level_test.background);
-level_test.enviroment.add(level_test.background);
+// BG 3
+level_test.bg2 = game.add.tileSprite(0,0,GAMEWIN.totalWidth, GAMEWIN.totalHeight, 'bg_buildingInt');
+level_test.layer.add(level_test.bg2);
+level_test.enviroment.add(level_test.bg2);
 
 // FLOOR
 level_test.floor= game.add.tileSprite(-600,GAMEWIN.floorHeight,2400, 50,'floor');
@@ -36,19 +45,19 @@ level_test.layer.add(level_test.table);
 level_test.enviroment.add(level_test.table);
 level_test.platforms.add(level_test.table);
 
+// TABLE PHYSICS
 level_test.table.body.immovable=true;
 level_test.table.body.allowGravity=false;
 
+// ENEMIES
 var enemies = [];
 
-enemies[0] = new pervert(300,0,0.5,300);
-enemies[1] = new pervert(400,0,0.5,300);
-enemies[2] = new pervert(500,0,0.5,300);
+enemies[0] = new pervert(0,0,0.5,300);
+enemies[1] = new pervert(GAMEWIN.totalWidth,0,0.5,300);
+enemies[2] = new pervert(GAMEWIN.totalWidth + 100,0,0.5,300);
 
-level_test.updateEnemys= function(){
-
-for(i=0;i<enemies.length;i++)
-    {
+level_test.updateEnemies= function(){
+  for(i=0;i<enemies.length;i++){
     enemies[i].update();
-    }
+  }
 };

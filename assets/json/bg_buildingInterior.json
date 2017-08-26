@@ -1,0 +1,25 @@
+{ "frames": {
+   "bg_buildingInterior.ase": {
+    "frame": { "x": 0, "y": 0, "w": 1400, "h": 600 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 1400, "h": 600 },
+    "sourceSize": { "w": 1400, "h": 600 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.1.13",
+  "image": "/Users/jn/Code/phaser/girl/assets/media/bg_buildingInterior.png",
+  "format": "RGBA8888",
+  "size": { "w": 1400, "h": 600 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Tag", "from": 0, "to": 0, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}

@@ -24,7 +24,7 @@ function create() {
 
   game.forceSingleUpdate = true
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  game.physics.arcade.gravity.y = 3000;
+  game.physics.arcade.gravity.y = 2500;
   girl_animator.startIdle();
 
 }
@@ -33,10 +33,14 @@ function update(){
 
   collisions();
 
-  level_test.updateEnemys();
+  level_test.updateEnemies();
+
   girl.jumping();
   girl.walking();
   girl_animator.fixJumpAnimation();
+
+  // Background Day Time Change
+  level_test.bg0.tilePosition.y -= .01;
 
 }
 function render(){
@@ -44,7 +48,7 @@ function render(){
   //----------- DEBUG BELOW THIS LINE XD ---------------//>
   game.debug.text("FPS: " + game.time.fps, 16, 16, "#00ff00");
   // game.debug.body(perv1.sprite);
-  game.debug.body(girl.sprite);
+  // game.debug.body(girl.sprite);
   game.debug.body(level_test.floor);
   game.debug.body(level_test.table);
   // game.debug.text("Controls: Left Arrow, Right Arrow, B, I", 32, 32);

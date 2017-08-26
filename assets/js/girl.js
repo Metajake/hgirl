@@ -22,31 +22,31 @@ girl.group.add(girl.sit);
 level_test.layer.add(girl.group);
 
 // Set Girl Spawn Location
-girl.group.x = 100;
+girl.group.x = GAMEWIN.totalWidth / 2;
 girl.group.y = GAMEWIN.floorHeight - (girl.sprite.body.height + 30);
 // girl.group.y = GAMEWIN.floorHeight;
 
-// Set Girl "Physical" Properties
+// Set Girl MOVEMENT Properties
 girl.facing = 'right'
 girl.isJumping = false;
-girl.jumpHeight=830;
+girl.jumpHeight=750;
 girl.speed= 4.5;
 
 // Center Girl Anchor
 girl.sprite.anchor.setTo(.5,.5);
 girl.sit.anchor.setTo(.5,.5);
 
-// Increase Girl Sprite Size
+// SCALE Girl Sprite
 girl.sprite.scale.setTo(game.spriteScale);
 // girl.sprite.body.setSize(66, 130);
 
-//Update Collision Properties
-// girl.sprite.body.position.y -= 100;
-
+//Update COLLISION Properties
+girl.sprite.body.width = 100;
+girl.sprite.body.collideWorldBounds = true;
 // Define Girl Animation JSON
 girl.json = game.cache.getJSON('girlJson');
 
-// Get Converted Animation Frame Arrays
+// Converted Frame Arrays
 girl.girlIdleArray = frame_converter.getAnimArray(girl.json,[0,1,2,3,4,5,6]);
 girl.girlWalkArray = frame_converter.getAnimArray(girl.json,[12,13,14,15,16,17]);
 girl.girlAccelArray = frame_converter.getAnimArray(girl.json,[8,9,10,11]);
@@ -54,7 +54,7 @@ girl.girlSlowAccelArray = frame_converter.getAnimArray(girl.json,[8,11]);
 girl.girlDecelArray = frame_converter.getAnimArray(girl.json,[11,8]);
 girl.girlBounceArray = frame_converter.getAnimArray(girl.json,[18,19,20,21,22,23,24]);
 
-// Define Girl Animations
+// Girl Animations
 girl.idle = girl.sprite.animations.add('idle', girl.girlIdleArray,/*FPS speed*/ 40,/*loop*/ true);
 girl.walk = girl.sprite.animations.add('walk',girl.girlWalkArray,/*FPS speed*/ 40,/*loop*/ true);
 girl.accel = girl.sprite.animations.add('accel', girl.girlAccelArray,/*FPS speed*/ 40);
@@ -66,7 +66,7 @@ girl_animator.addJumpAnimation();
 girl_animator.addLeftAnimation();
 girl_animator.addRightAnimation();
 
-// Girl Jump Update Function (on Game Loop)
+// Game Loop Update: Girl Jump
 girl.jumping = function () {
   if(controls.jump.isDown && girl.sprite.body.touching.down){
     girl.sprite.body.velocity.y = -girl.jumpHeight;
@@ -86,7 +86,7 @@ girl.jumping = function () {
 };
 
 
-// Girl Walk Update Function
+// Game Loop Update: Girl Walk
 girl.walking = function () {
   if(controls.moveLeft.isDown && controls.moveRight.isDown ) {
     if(controls.two_keys_down == false) {
@@ -100,6 +100,8 @@ girl.walking = function () {
 
     if(girl.facing == 'left'){
       girl.group.x += girl.speed;
+
+      level_test.bg1.tilePosition.x -= .9;
     }
 
     if(girl.facing == 'right'){
@@ -109,6 +111,8 @@ girl.walking = function () {
     controls.two_keys_down = true;
 
   } else if(controls.moveRight.isDown ){
+
+    // MOVE RIGHT
     if(controls.two_keys_down == true) {
       girl.sprite.scale.x = game.spriteScale;
     }
@@ -118,9 +122,23 @@ girl.walking = function () {
       girl.facing = 'right';
     }
 
-    girl.group.x += girl.speed;
     controls.two_keys_down = false;
+
+    girl.group.x += girl.speed;
+
+    // ENVIRONMENT REPOSITIONING
+    level_test.bg1.tilePosition.x -= .9;
+    level_test.bg2.tilePosition.x -= 2.5;
+    level_test.table.position.x -= 5;
+    for(i=0;i<enemies.length;i++){
+      if(enemies[i].sprite.position.x > -100){
+        enemies[i].sprite.position.x -= 5;
+      }
+    }
+
   } else if(controls.moveLeft.isDown ){
+
+    // MOVE LEFT
     if(controls.two_keys_down == true) {
       girl.sprite.scale.x = -game.spriteScale;
     }
@@ -130,7 +148,18 @@ girl.walking = function () {
       girl.facing = 'left';
     }
 
-    girl.group.x -= girl.speed;
     controls.two_keys_down = false;
+
+    girl.group.x -= girl.speed;
+
+    // ENVIRONMENT REPOSITIONING
+    level_test.bg1.tilePosition.x += .9;
+    level_test.bg2.tilePosition.x += 2.5;
+    level_test.table.position.x += 5;
+    for(i=0;i<enemies.length;i++){
+      if(enemies[i].sprite.position.x < GAMEWIN.totalWidth + 100){
+        enemies[i].sprite.position.x += 5;
+      }
+    }
   }
 };

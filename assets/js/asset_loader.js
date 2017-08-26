@@ -12,7 +12,9 @@
     game.load.spritesheet('girlSit', 'assets/media/girl_sit.png', 64, 64);
 
    //load png
-    game.load.image('background', 'assets/media/background.png', 1200, 700);
+    game.load.image('bg_space', 'assets/media/bg_space.png', 800, 600);
+    game.load.image('bg_trees', 'assets/media/bg_trees.png', 1200, 600);
+    game.load.image('bg_buildingInt', 'assets/media/bg_buildingInterior.png', 1400, 600);
     game.load.image('floor', 'assets/media/floor.png', 1200, 100);
     game.load.image('pervert', 'assets/media/pervert.png', 1200, 100);
     game.load.image('table', 'assets/media/booth_table_curtain.png', 96, 30);
