@@ -35,9 +35,9 @@ level_test.table.body.allowGravity=false;
 
 var enemies = [];
 
-enemies[0] = new pervert(300,500,0.5,300);
-enemies[1] = new pervert(400,500,0.5,300);
-enemies[2] = new pervert(500,500,0.5,300);
+enemies[0] = new pervert(300,0,0.5,300);
+enemies[1] = new pervert(400,0,0.5,300);
+enemies[2] = new pervert(500,0,0.5,300);
 
 level_test.updateEnemys= function(){
 
