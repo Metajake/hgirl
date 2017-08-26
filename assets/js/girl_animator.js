@@ -8,11 +8,11 @@ girl_animator.startIdle = function(){
 };
 
 girl_animator.fixJumpAnimation = function () {
-  if(girl.sprite.animations.currentAnim.name !== 'bounce' && !girl.hitPlatform){
-    girl.bounce.play();
-  }else if (!girl.isJumping && !controls.moveLeft.isDown && !controls.moveRight.isDown){
-    girl.idle.play();
-  }
+  // if(girl.sprite.animations.currentAnim.name !== 'bounce' && !girl.hitPlatform){
+  //   girl.bounce.play();
+  // }else if (!girl.isJumping && !controls.moveLeft.isDown && !controls.moveRight.isDown){
+  //   girl.idle.play();
+  // }
 };
 
 girl_animator.addJumpAnimation = function (){

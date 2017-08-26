@@ -8,7 +8,7 @@ const game = new Phaser.Game(
   false
 );
 
-// THIS MUST BE GLOBAL FOR DEFINING GIRL(PLAYER)
+// THIS MUST BE GLOBAL TO DEFINE GIRL(PLAYER)
 // BUT IT IS VERY SPECIFIC TO THE LEVEL.
 // MAYBE WE RELOCATE IT LATER...
 // GAME SPRITE SIZE SCALE
@@ -24,7 +24,7 @@ function create() {
 
   game.forceSingleUpdate = true
   game.physics.startSystem(Phaser.Physics.ARCADE);
-  game.physics.arcade.gravity.y = 950;
+  game.physics.arcade.gravity.y = 3000;
   girl_animator.startIdle();
 
 }
@@ -36,15 +36,21 @@ function update(){
   level_test.updateEnemys();
   girl.jumping();
   girl.walking();
+  girl_animator.fixJumpAnimation();
 
 }
 function render(){
-  game.debug.text(game.time.fps, 16, 16, "#00ff00");
+
+  //----------- DEBUG BELOW THIS LINE XD ---------------//>
+  game.debug.text("FPS: " + game.time.fps, 16, 16, "#00ff00");
   // game.debug.body(perv1.sprite);
   game.debug.body(girl.sprite);
   game.debug.body(level_test.floor);
+  game.debug.body(level_test.table);
   // game.debug.text("Controls: Left Arrow, Right Arrow, B, I", 32, 32);
   game.debug.text(girl.hitPlatform, 32, 48);
+  //----------- DEBUG ABOVE THIS LINE :| ---------------//>
+
 }
 
 function collisions(){

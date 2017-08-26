@@ -24,11 +24,12 @@ level_test.layer.add(girl.group);
 // Set Girl Spawn Location
 girl.group.x = 100;
 girl.group.y = GAMEWIN.floorHeight - (girl.sprite.body.height + 30);
+// girl.group.y = GAMEWIN.floorHeight;
 
 // Set Girl "Physical" Properties
 girl.facing = 'right'
 girl.isJumping = false;
-girl.jumpHeight=430;
+girl.jumpHeight=830;
 girl.speed= 4.5;
 
 // Center Girl Anchor
@@ -67,22 +68,25 @@ girl_animator.addRightAnimation();
 
 // Girl Jump Update Function (on Game Loop)
 girl.jumping = function () {
-  if(controls.jump.isDown && girl.hitPlatform){
+  if(controls.jump.isDown && girl.sprite.body.touching.down){
     girl.sprite.body.velocity.y = -girl.jumpHeight;
+  }
+  if(!girl.sprite.body.wasTouching.down){
     girl.isJumping = true;
-    girl_animator.fixJumpAnimation();
+  }else{
+    girl.isJumping = false;
   }
 
-  if(girl.sprite.body.touching.down/* && girl.isJumping*/){
-    // cl("jump");
-    girl.isJumping = false;
-    girl_animator.fixJumpAnimation();
-    // cl("yo");
-  }
+  // if(girl.hitPlatform /* && girl.isJumping*/){
+  //   // cl("jump");
+  //   girl.isJumping = false;
+  //   girl_animator.fixJumpAnimation();
+  //   // cl("yo");
+  // }
 };
 
 
-// Girl Walk Update Function (on Game Loop)
+// Girl Walk Update Function
 girl.walking = function () {
   if(controls.moveLeft.isDown && controls.moveRight.isDown ) {
     if(controls.two_keys_down == false) {
