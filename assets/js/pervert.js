@@ -15,8 +15,8 @@ const pervert = function(x,y,speed,radius){
   this.seeGirl=false;
 
   this.follow = function (){
-    if(girl.sprite.body.x - 3*-this.speed>this.x){
-      this.sprite.scale.x = 1.5;
+    if(girl.sprite.body.x - 3*-this.speed>this.x)
+      {this.sprite.scale.x = 1.5;
       this.sprite.body.x += 3*this.speed;
     }
 
@@ -26,7 +26,7 @@ const pervert = function(x,y,speed,radius){
     }
   };
 
-  this.awareness =  function(){
+  this.awareness =  function (){
       if(Math.abs(girl.sprite.body.x-this.x)<= this.radius){
 
       this.sprite.tint= 0xff0000;

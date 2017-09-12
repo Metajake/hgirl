@@ -85,6 +85,9 @@ girl.jumping = function () {
   // }
 };
 
+girl.boobFlash = function () {
+
+}
 
 // Game Loop Update: Girl Walk
 girl.walking = function () {
@@ -126,7 +129,7 @@ girl.walking = function () {
 
     girl.group.x += girl.speed;
 
-    // ENVIRONMENT REPOSITIONING
+    /* ENVIRONMENT REPOSITIONING
     level_test.bg1.tilePosition.x -= .9;
     level_test.bg2.tilePosition.x -= 2.5;
     level_test.table.position.x -= 5;
@@ -134,7 +137,7 @@ girl.walking = function () {
       if(enemies[i].sprite.position.x > -100){
         enemies[i].sprite.position.x -= 5;
       }
-    }
+    }*/
 
   } else if(controls.moveLeft.isDown ){
 
@@ -152,7 +155,7 @@ girl.walking = function () {
 
     girl.group.x -= girl.speed;
 
-    // ENVIRONMENT REPOSITIONING
+    /* ENVIRONMENT REPOSITIONING
     level_test.bg1.tilePosition.x += .9;
     level_test.bg2.tilePosition.x += 2.5;
     level_test.table.position.x += 5;
@@ -160,6 +163,6 @@ girl.walking = function () {
       if(enemies[i].sprite.position.x < GAMEWIN.totalWidth + 100){
         enemies[i].sprite.position.x += 5;
       }
-    }
+    }*/
   }
 };

@@ -12,6 +12,7 @@ const game = new Phaser.Game(
 // BUT IT IS VERY SPECIFIC TO THE LEVEL.
 // MAYBE WE RELOCATE IT LATER...
 // GAME SPRITE SIZE SCALE
+
 game.spriteScale = 3;
 
 function preload() {
