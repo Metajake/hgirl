@@ -50,14 +50,13 @@ level_test.table.body.immovable=true;
 level_test.table.body.allowGravity=false;
 
 // ENEMIES
-var enemies = [];
+level_test.enemies = [];
 
-enemies[0] = new pervert(0,0,0.5,300);
-enemies[1] = new pervert(GAMEWIN.totalWidth,0,0.5,300);
-enemies[2] = new pervert(GAMEWIN.totalWidth + 100,0,0.5,300);
-
+level_test.enemies[0] = new pervert(0,0,0.5);
+level_test.enemies[1] = new pervert(GAMEWIN.totalWidth,0,0.5);
+level_test.enemies[2] = new pervert(GAMEWIN.totalWidth + 100,0,0.5);
 level_test.updateEnemies= function(){
-  for(i=0;i<enemies.length;i++){
-    enemies[i].update();
+  for(i=0;i<level_test.enemies.length;i++){
+    level_test.enemies[i].update();
   }
 };

@@ -10,13 +10,14 @@ girl.sit.visible = false;
 
 //Enable Physics
 game.physics.arcade.enable(girl.sprite, Phaser.Physics.ARCADE);
-game.physics.arcade.enable(girl.sit, Phaser.Physics.ARCADE);
+
 
 // Create Group for All Girl Sprites Position Transformations
 // Add Sprites to Group
 girl.group = game.add.group();
-girl.group.add(girl.sprite);
 girl.group.add(girl.sit);
+girl.group.add(girl.sprite);
+
 
 // Add Girl Group to Layer Collision Group
 level_test.layer.add(girl.group);
@@ -31,13 +32,16 @@ girl.facing = 'right'
 girl.isJumping = false;
 girl.jumpHeight=750;
 girl.speed= 4.5;
+girl.boobs= false;
+
+// SCALE Girl Sprite
+girl.sprite.scale.setTo(game.spriteScale);
+girl.sit.scale.setTo(game.spriteScale);
 
 // Center Girl Anchor
 girl.sprite.anchor.setTo(.5,.5);
 girl.sit.anchor.setTo(.5,.5);
 
-// SCALE Girl Sprite
-girl.sprite.scale.setTo(game.spriteScale);
 // girl.sprite.body.setSize(66, 130);
 
 //Update COLLISION Properties
@@ -68,30 +72,31 @@ girl_animator.addRightAnimation();
 
 // Game Loop Update: Girl Jump
 girl.jumping = function () {
-  if(controls.jump.isDown && girl.sprite.body.touching.down){
+  if(controls.jump.isDown && girl.sprite.body.touching.down && girl.boobs==false){
     girl.sprite.body.velocity.y = -girl.jumpHeight;
+    girl.sit.position=girl.sprite.position;
   }
   if(!girl.sprite.body.wasTouching.down){
     girl.isJumping = true;
   }else{
     girl.isJumping = false;
   }
-
-  // if(girl.hitPlatform /* && girl.isJumping*/){
-  //   // cl("jump");
-  //   girl.isJumping = false;
-  //   girl_animator.fixJumpAnimation();
-  //   // cl("yo");
-  // }
 };
 
 girl.boobFlash = function () {
+ if(controls.boobs.isDown && girl.sprite.body.touching.down){
+  girl.boobs=true;
+  girl.sprite.visible=false;
+  girl.sit.visible=true;
 
+ }else{ girl.boobs=false;
+  girl.sprite.visible=true;
+  girl.sit.visible=false;}
 }
 
 // Game Loop Update: Girl Walk
 girl.walking = function () {
-  if(controls.moveLeft.isDown && controls.moveRight.isDown ) {
+  if(controls.moveLeft.isDown && controls.moveRight.isDown && girl.boobs==false ) {
     if(controls.two_keys_down == false) {
       if(girl.facing == 'left'){
         girl.sprite.scale.x = game.spriteScale;
@@ -113,7 +118,7 @@ girl.walking = function () {
 
     controls.two_keys_down = true;
 
-  } else if(controls.moveRight.isDown ){
+  } else if(controls.moveRight.isDown && girl.boobs==false ){
 
     // MOVE RIGHT
     if(controls.two_keys_down == true) {
@@ -139,7 +144,7 @@ girl.walking = function () {
       }
     }*/
 
-  } else if(controls.moveLeft.isDown ){
+  } else if(controls.moveLeft.isDown && girl.boobs==false ){
 
     // MOVE LEFT
     if(controls.two_keys_down == true) {

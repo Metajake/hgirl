@@ -36,6 +36,7 @@ function update(){
 
   level_test.updateEnemies();
 
+  girl.boobFlash();
   girl.jumping();
   girl.walking();
   girl_animator.fixJumpAnimation();
@@ -54,13 +55,21 @@ function render(){
   game.debug.body(level_test.table);
   // game.debug.text("Controls: Left Arrow, Right Arrow, B, I", 32, 32);
   game.debug.text(girl.hitPlatform, 32, 48);
+  enemyRender();
   //----------- DEBUG ABOVE THIS LINE :| ---------------//>
 
 }
 
+function enemyRender(){
+  for(i=0;i<level_test.enemies.length;i++){
+     game.debug.text(level_test.enemies[i].life, level_test.enemies[i].sprite.body.x+35, level_test.enemies[i].sprite.body.y-20);
+  }
+  
+};
+
 function collisions(){
-  for(i=0;i<enemies.length;i++){
-    game.physics.arcade.collide(enemies[i].sprite, level_test.platforms);
+  for(i=0;i<level_test.enemies.length;i++){
+    game.physics.arcade.collide(level_test.enemies[i].sprite, level_test.platforms);
   }
   girl.hitPlatform = game.physics.arcade.collide(girl.sprite, level_test.platforms);
 };
