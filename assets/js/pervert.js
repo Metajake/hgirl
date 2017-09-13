@@ -40,6 +40,7 @@ this.hit = function(){
    girl.speed=0;
    girl.jumpHeight=0;
    this.attackRadius=0; 
+   this.isAttacking=false;
   }
   this.followRadius=400;
   this.speed=speed;  

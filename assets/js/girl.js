@@ -109,7 +109,7 @@ girl.walking = function () {
     if(girl.facing == 'left'){
       girl.group.x += girl.speed;
 
-      level_test.bg1.tilePosition.x -= .9;
+     // level_test.bg1.tilePosition.x -= .9;
     }
 
     if(girl.facing == 'right'){
