@@ -69,7 +69,7 @@ this.hit = function(){
 
   {
    speed=3;
-   girl.speed=100;
+   girl.speed=0;
    girl.jumpHeight=0;
    this.attackRadius=0;
    this.isAttacking=false;
