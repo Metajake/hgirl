@@ -43,10 +43,10 @@ function update(){
 
   // Background Day Time Change
   level_test.bg0.tilePosition.y -= .01;
-
+console.log(level_test.enemies);
 }
 function render(){
-
+  
   //----------- DEBUG BELOW THIS LINE XD ---------------//>
   game.debug.text("FPS: " + game.time.fps, 16, 16, "#00ff00");
   // game.debug.body(perv1.sprite);
@@ -61,8 +61,12 @@ function render(){
 }
 
 function enemyRender(){
+  
   for(i=0;i<level_test.enemies.length;i++){
-     game.debug.text(level_test.enemies[i].life, level_test.enemies[i].sprite.body.x+35, level_test.enemies[i].sprite.body.y-20);
+    if(level_test.enemies[i].dead==false)
+    {
+      game.debug.text(level_test.enemies[i].life, level_test.enemies[i].sprite.body.x+35, level_test.enemies[i].sprite.body.y-20);
+    }
   }
   
 };

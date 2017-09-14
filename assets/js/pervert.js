@@ -1,4 +1,4 @@
-const pervert = function(x,y,speed){
+const pervert = function(ID,x,y,speed){
 
   this.sprite = game.add.sprite(x, y, 'pervert');
 
@@ -8,6 +8,7 @@ const pervert = function(x,y,speed){
   this.alive =true;
   game.physics.arcade.enable(this.sprite, Phaser.Physics.ARCADE);
 
+  this.ID=ID;
   this.sprite.scale.setTo(1.5);
   this.sprite.anchor.setTo(.5,.5);
   this.speed=speed;
@@ -16,8 +17,38 @@ const pervert = function(x,y,speed){
   this.seeGirl=false;
   this.attackTime=2;
   this.isAttacking=false;
-  this.life=300;
+  this.maxLife=100;
+  this.life=this.maxLife;
+  this.stunned =false;
+  this.dead= false;
 
+  
+  this.die= function(){
+    if(this.life <0)
+    {
+     this.life=0;
+    }
+    if(this.life == 0 && girl.boobs == false)
+    {
+      this.sprite.destroy();
+      this.dead=true;
+      girl.ableToFlash=false;
+      
+    }
+  }
+
+  this.seeBoobs= function(){
+    if(girl.boobs==true)
+    {
+     this.life-=1;
+    this.stunned =true;
+    }
+    if(this.life<=this.maxLife && this.life>0 && girl.boobs == false && this.stunned ==true)
+    {
+      this.hit();
+    }
+
+  };
 
   this.follow = function (){
     if(girl.sprite.body.x+35>this.x)
@@ -34,9 +65,10 @@ const pervert = function(x,y,speed){
   };
 
 this.hit = function(){
-  if(Math.abs(girl.sprite.body.x+50-this.x)<= this.attackRadius)
+  if(Math.abs(girl.sprite.body.x+50-this.x)<= this.attackRadius && girl.boobs==false && this.life !=0)
 
   {
+   speed=3;
    girl.speed=0;
    girl.jumpHeight=0;
    this.attackRadius=0; 
@@ -51,14 +83,17 @@ this.hit = function(){
   this.awareness =  function (){
     if(Math.abs(girl.sprite.body.x+50-this.x)<= this.attackRadius)
     {
-    
+      if(this.isAttacking==false)
+      {
+        game.time.events.add(Phaser.Timer.SECOND * 2, this.hit,this);
+      }
+    girl.ableToFlash=true;
     this.sprite.tint=0x0000ff;
     this.isAttacking=true;
     this.followRadius=0;
     this.speed=0;
-    game.time.events.add(Phaser.Timer.SECOND * 2, this.hit,this);
-
-      
+    this.seeBoobs();
+    
     }else
     {
 
@@ -89,8 +124,12 @@ this.hit = function(){
   };
 
   this.update = function(){
-    this.getPosition();
-    this.awareness();
+    if(this.dead==false)
+    {
+      this.getPosition();
+      this.awareness();
+      this.die();
+    }
   };
 
 };

@@ -33,6 +33,7 @@ girl.isJumping = false;
 girl.jumpHeight=750;
 girl.speed= 4.5;
 girl.boobs= false;
+girl.ableToFlash=false;
 
 // SCALE Girl Sprite
 girl.sprite.scale.setTo(game.spriteScale);
@@ -84,7 +85,7 @@ girl.jumping = function () {
 };
 
 girl.boobFlash = function () {
- if(controls.boobs.isDown && girl.sprite.body.touching.down){
+ if(controls.boobs.isDown && girl.sprite.body.touching.down && girl.ableToFlash==true){
   girl.boobs=true;
   girl.sprite.visible=false;
   girl.sit.visible=true;

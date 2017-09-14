@@ -52,11 +52,20 @@ level_test.table.body.allowGravity=false;
 // ENEMIES
 level_test.enemies = [];
 
-level_test.enemies[0] = new pervert(0,0,0.5);
-level_test.enemies[1] = new pervert(GAMEWIN.totalWidth,0,0.5);
-level_test.enemies[2] = new pervert(GAMEWIN.totalWidth + 100,0,0.5);
+level_test.enemies[0] = new pervert(0,0,0,0.5);
+level_test.enemies[1] = new pervert(1,GAMEWIN.totalWidth,0,0.5);
+level_test.enemies[2] = new pervert(2,GAMEWIN.totalWidth + 100,0,0.5);
+
 level_test.updateEnemies= function(){
   for(i=0;i<level_test.enemies.length;i++){
     level_test.enemies[i].update();
+  }
+};
+
+level_test.destroyOneEnemy= function(ID){
+  for(i=ID;i+1<level_test.enemies.length;i++){
+    
+    level_test.enemies[i]=level_test.enemies[i+1];
+    level_test.enemies[i].ID-=1;
   }
 };
