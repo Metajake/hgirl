@@ -3,23 +3,23 @@ const game = new Phaser.Game(
   GAMEWIN.totalHeight,
   Phaser.CANVAS,
   'main',
-  { preload: preload, create: create, update: update, render:render },
+  null,
   false,
   false
 );
 
 // THIS MUST BE GLOBAL TO DEFINE GIRL(PLAYER)
 // BUT IT IS VERY SPECIFIC TO THE LEVEL.
-// MAYBE WE RELOCATE IT LATER...
+// (MAYBE WE RELOCATE IT LATER...)
 // GAME SPRITE SIZE SCALE
-
 game.spriteScale = 3;
 
-function preload() {
+const gameState = {
+	preload: function() {
    asset_loader.loadAssets();
- }
+ },
 
-function create() {
+create: function() {
   // Set Advanced Timing for FPS debugging
   game.time.advancedTiming = true;
 
@@ -28,9 +28,9 @@ function create() {
   game.physics.arcade.gravity.y = 2500;
   girl_animator.startIdle();
 
-}
+},
 
-function update(){
+update: function(){
 
   collisions();
 
@@ -43,10 +43,11 @@ function update(){
 
   // Background Day Time Change
   level_test.bg0.tilePosition.y -= .01;
-console.log(level_test.enemies);
-}
-function render(){
-  
+  // console.log(level_test.enemies);
+},
+
+render: function(){
+
   //----------- DEBUG BELOW THIS LINE XD ---------------//>
   game.debug.text("FPS: " + game.time.fps, 16, 16, "#00ff00");
   // game.debug.body(perv1.sprite);
@@ -59,16 +60,19 @@ function render(){
   //----------- DEBUG ABOVE THIS LINE :| ---------------//>
 
 }
+};
+game.state.add("level", gameState);
+game.state.start("level");
 
 function enemyRender(){
-  
+
   for(i=0;i<level_test.enemies.length;i++){
     if(level_test.enemies[i].dead==false)
     {
       game.debug.text(level_test.enemies[i].life, level_test.enemies[i].sprite.body.x+35, level_test.enemies[i].sprite.body.y-20);
     }
   }
-  
+
 };
 
 function collisions(){

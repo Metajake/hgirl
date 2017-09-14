@@ -22,7 +22,7 @@ const pervert = function(ID,x,y,speed){
   this.stunned =false;
   this.dead= false;
 
-  
+
   this.die= function(){
     if(this.life <0)
     {
@@ -33,7 +33,7 @@ const pervert = function(ID,x,y,speed){
       this.sprite.destroy();
       this.dead=true;
       girl.ableToFlash=false;
-      
+
     }
   }
 
@@ -53,13 +53,13 @@ const pervert = function(ID,x,y,speed){
   this.follow = function (){
     if(girl.sprite.body.x+35>this.x)
       {this.sprite.scale.x = 1.5;
-        
+
       this.sprite.body.x += 3*this.speed
     }
 
     if(girl.sprite.body.x+45<this.x){
       this.sprite.scale.x = -1.5;
-      
+
       this.sprite.body.x += 3*-this.speed;
     }
   };
@@ -69,13 +69,13 @@ this.hit = function(){
 
   {
    speed=3;
-   girl.speed=0;
+   girl.speed=100;
    girl.jumpHeight=0;
-   this.attackRadius=0; 
+   this.attackRadius=0;
    this.isAttacking=false;
   }
   this.followRadius=400;
-  this.speed=speed;  
+  this.speed=speed;
   this.isAttacking=false;
 };
 
@@ -93,7 +93,7 @@ this.hit = function(){
     this.followRadius=0;
     this.speed=0;
     this.seeBoobs();
-    
+
     }else
     {
 
@@ -103,7 +103,7 @@ this.hit = function(){
         this.sprite.tint= 0xff0000;
         seeGirl=true;
         this.follow();
- 
+
       }else
       {
         if(this.isAttacking==false)
@@ -114,7 +114,7 @@ this.hit = function(){
       }
     }
   };
- 
+
 
 
 
