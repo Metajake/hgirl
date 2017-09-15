@@ -16,8 +16,8 @@ game.spriteScale = 3;
 
 const gameState = {
 	preload: function() {
-   asset_loader.loadAssets();
- },
+    asset_loader.loadAssets();
+  },
 
 create: function() {
   // Set Advanced Timing for FPS debugging
@@ -61,6 +61,7 @@ render: function(){
 
 }
 };
+
 game.state.add("level", gameState);
 game.state.start("level");
 

@@ -69,8 +69,9 @@ this.hit = function(){
 
   {
    speed=3;
-   girl.speed=0;
-   girl.jumpHeight=0;
+   game.add.text(this.sprite.position.x, this.sprite.position.y , "Game Over", { font: "20px uni0553", fill: "#FFFFFF"});
+  //  girl.speed=0;
+  //  girl.jumpHeight=0;
    this.attackRadius=0;
    this.isAttacking=false;
   }

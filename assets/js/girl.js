@@ -43,18 +43,18 @@ girl.sit.scale.setTo(game.spriteScale);
 girl.sprite.anchor.setTo(.5,.5);
 girl.sit.anchor.setTo(.5,.5);
 
-// girl.sprite.body.setSize(66, 130);
 
 //Update COLLISION Properties
-girl.sprite.body.width = 100;
+girl.sprite.body.setSize(25, girl.sprite.body.height, 20, 0);
 girl.sprite.body.collideWorldBounds = true;
+
 // Define Girl Animation JSON
 girl.json = game.cache.getJSON('girlJson');
 girl.json2 = game.cache.getJSON('girlJson2');
 
 // Converted Frame Arrays
 girl.girlIdleArray = frame_converter.getAnimArray(girl.json2,[0,1,2,3,4,5,6,7,8,9,10,11,12]);
-// girl.girlWalkArray = frame_converter.getAnimArray(girl.json,[12,13,14,15,16,17]);
+girl.girlWalkArray = frame_converter.getAnimArray(girl.json2,[14,15,16,17,18]);
 // girl.girlAccelArray = frame_converter.getAnimArray(girl.json,[8,9,10,11]);
 // girl.girlSlowAccelArray = frame_converter.getAnimArray(girl.json,[8,11]);
 // girl.girlDecelArray = frame_converter.getAnimArray(girl.json,[11,8]);
@@ -62,13 +62,13 @@ girl.girlIdleArray = frame_converter.getAnimArray(girl.json2,[0,1,2,3,4,5,6,7,8,
 
 // Girl Animations
 girl.idle = girl.sprite.animations.add('idle', girl.girlIdleArray,/*FPS speed*/ 40,/*loop*/ true);
-// girl.walk = girl.sprite.animations.add('walk',girl.girlWalkArray,/*FPS speed*/ 40,/*loop*/ true);
+girl.walk = girl.sprite.animations.add('walk',girl.girlWalkArray,/*FPS speed*/ 40,/*loop*/ true);
 // girl.accel = girl.sprite.animations.add('accel', girl.girlAccelArray,/*FPS speed*/ 40);
 // girl.decel = girl.sprite.animations.add('decel', girl.girlDecelArray,/*FPS speed*/ 40);
 // girl.bounce = girl.sprite.animations.add('bounce',girl.girlBounceArray, /*FPS speed*/ 40);
 
 // Add Animations
-girl_animator.addJumpAnimation();
+// girl_animator.addJumpAnimation();
 girl_animator.addLeftAnimation();
 girl_animator.addRightAnimation();
 
