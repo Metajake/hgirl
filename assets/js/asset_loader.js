@@ -5,10 +5,12 @@
 
    //load json
     game.load.json('girlJson', 'assets/json/girl.json');
+    game.load.json('girlJson2', 'assets/json/girl_idle_64_bigPigtails.json');
     game.load.json('girlSitJson', 'assets/json/girl_sit.json');
 
    //load spritesheet
-    game.load.spritesheet('girl', 'assets/media/girl.png', 64, 64);
+    game.load.spritesheet('girl', 'assets/media/girl_idle_64_bigPigtails.png', 64, 64);
+    // game.load.spritesheet('girl2', 'assets/media/girl_idle_64_bigPigtails.png', 64, 64);
     game.load.spritesheet('girlSit', 'assets/media/girl_sit.png', 64, 64);
 
    //load png

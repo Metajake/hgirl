@@ -26,6 +26,7 @@ frame_converter.countSize = function(obj) {
 };
 
  frame_converter.getAnimArray= function(jsonObj,initArray){
+   cl(initArray)
   var newAnimArray = [];
 
   if(!initArray){
@@ -48,6 +49,3 @@ frame_converter.countSize = function(obj) {
   return newAnimArray;
 
 };
-
-
-

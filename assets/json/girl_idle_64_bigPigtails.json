@@ -1,0 +1,144 @@
+{ "frames": {
+   "girl_idle_64_bigPigtails 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 125
+   },
+   "girl_idle_64_bigPigtails 1.ase": {
+    "frame": { "x": 64, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   },
+   "girl_idle_64_bigPigtails 2.ase": {
+    "frame": { "x": 128, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   },
+   "girl_idle_64_bigPigtails 3.ase": {
+    "frame": { "x": 192, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   },
+   "girl_idle_64_bigPigtails 4.ase": {
+    "frame": { "x": 256, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 125
+   },
+   "girl_idle_64_bigPigtails 5.ase": {
+    "frame": { "x": 320, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   },
+   "girl_idle_64_bigPigtails 6.ase": {
+    "frame": { "x": 384, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 100
+   },
+   "girl_idle_64_bigPigtails 7.ase": {
+    "frame": { "x": 448, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   },
+   "girl_idle_64_bigPigtails 8.ase": {
+    "frame": { "x": 512, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   },
+   "girl_idle_64_bigPigtails 9.ase": {
+    "frame": { "x": 576, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   },
+   "girl_idle_64_bigPigtails 10.ase": {
+    "frame": { "x": 640, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   },
+   "girl_idle_64_bigPigtails 11.ase": {
+    "frame": { "x": 704, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 175
+   },
+   "girl_idle_64_bigPigtails 12.ase": {
+    "frame": { "x": 768, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 150
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.1.13",
+  "image": "/Users/jn/Desktop/projects/vitaminH/girl/assets/girl_idle_64_bigPigtails.png",
+  "format": "RGBA8888",
+  "size": { "w": 832, "h": 64 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "Tag", "from": 12, "to": 12, "direction": "forward" },
+   { "name": "", "from": 12, "to": 12, "direction": "forward" },
+   { "name": "hairBigPigOG", "from": 12, "to": 12, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "pallette", "opacity": 255, "blendMode": "normal" },
+   { "name": "torso1", "opacity": 255, "blendMode": "normal" },
+   { "name": "legs", "opacity": 255, "blendMode": "normal" },
+   { "name": "shoes", "opacity": 255, "blendMode": "normal" },
+   { "name": "undies", "opacity": 255, "blendMode": "normal" },
+   { "name": "armR_bent", "opacity": 255, "blendMode": "normal" },
+   { "name": "armL_sway", "opacity": 255, "blendMode": "normal" },
+   { "name": "head 2", "opacity": 255, "blendMode": "normal" },
+   { "name": "face", "opacity": 255, "blendMode": "normal" },
+   { "name": "boobL med", "opacity": 255, "blendMode": "normal" },
+   { "name": "boobR med", "opacity": 255, "blendMode": "normal" },
+   { "name": "boobs_both", "opacity": 255, "blendMode": "normal" },
+   { "name": "boobsC", "opacity": 255, "blendMode": "normal" },
+   { "name": "bikiniTop", "opacity": 255, "blendMode": "normal" },
+   { "name": "skirt_pleated", "opacity": 255, "blendMode": "normal" },
+   { "name": "skirt_stripe", "opacity": 255, "blendMode": "normal" },
+   { "name": "shirt_buttonDown", "opacity": 255, "blendMode": "normal" },
+   { "name": "collar", "opacity": 255, "blendMode": "normal" },
+   { "name": "hair_shaved", "opacity": 255, "blendMode": "normal" },
+   { "name": "hair_sides_barrett", "opacity": 255, "blendMode": "normal" },
+   { "name": "hair_jenAniston", "opacity": 255, "blendMode": "normal" },
+   { "name": "hair_bigPigtails", "opacity": 255, "blendMode": "normal" }
+  ]
+ }
+}
