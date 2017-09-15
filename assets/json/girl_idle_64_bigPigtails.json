@@ -109,7 +109,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
     "sourceSize": { "w": 64, "h": 64 },
-    "duration": 150
+    "duration": 250
    },
    "girl_idle_64_walk 14.ase": {
     "frame": { "x": 896, "y": 0, "w": 64, "h": 64 },

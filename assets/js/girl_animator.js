@@ -51,19 +51,17 @@ girl_animator.addRightAnimation = function (){
 
 controls.moveRight.onDown.add(function(){
       if(!girl.isJumping){
-      // girl.accel.onComplete.add(function(){girl.walk.play();}, this);
-      // girl.accel.play();
-      girl.walk.play()
+      girl.accel.onComplete.add(function(){girl.walk.play();}, this);
+      girl.accel.play();
     }
 
     });
     controls.moveRight.onUp.add(function(){
       if(!controls.moveLeft.isDown && !girl.isJumping){
-        // girl.decel.onComplete.add(function(){
-        //   girl.idle.play();
-        // }, this);
-        // girl.decel.play();
-        girl.idle.play();
+        girl.decel.onComplete.add(function(){
+          girl.idle.play();
+        }, this);
+        girl.decel.play();
       }
     });
 };
@@ -73,18 +71,16 @@ girl_animator.addLeftAnimation = function (){
 
     controls.moveLeft.onDown.add(function(){
       if(!girl.isJumping){
-      // girl.accel.onComplete.add(function(){girl.walk.play();}, this);
-      // girl.accel.play();
-      girl.walk.play();
+      girl.accel.onComplete.add(function(){girl.walk.play();}, this);
+      girl.accel.play();
     }
     });
     controls.moveLeft.onUp.add(function(){
       if(!controls.moveRight.isDown&& !girl.isJumping){
-        // girl.decel.onComplete.add(function(){
-        //   girl.idle.play();
-        // }, this);
-        // girl.decel.play();
-        girl.idle.play();
+        girl.decel.onComplete.add(function(){
+          girl.idle.play();
+        }, this);
+        girl.decel.play();
       }
     });
 
