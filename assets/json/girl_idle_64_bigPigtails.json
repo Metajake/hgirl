@@ -109,7 +109,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
     "sourceSize": { "w": 64, "h": 64 },
-    "duration": 250
+    "duration": 200
    },
    "girl_idle_64_walk 14.ase": {
     "frame": { "x": 896, "y": 0, "w": 64, "h": 64 },
@@ -150,14 +150,6 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
     "sourceSize": { "w": 64, "h": 64 },
     "duration": 200
-   },
-   "girl_idle_64_walk 19.ase": {
-    "frame": { "x": 1216, "y": 0, "w": 64, "h": 64 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
-    "sourceSize": { "w": 64, "h": 64 },
-    "duration": 150
    }
  },
  "meta": {
@@ -165,21 +157,25 @@
   "version": "1.1.13",
   "image": "/Users/jn/Code/phaser/girl/assets/media/girl_idle_64_bigPigtails.png",
   "format": "RGBA8888",
-  "size": { "w": 1280, "h": 64 },
+  "size": { "w": 1216, "h": 64 },
   "scale": "1",
   "frameTags": [
-   { "name": "", "from": 12, "to": 19, "direction": "forward" },
-   { "name": "", "from": 12, "to": 19, "direction": "forward" },
-   { "name": "", "from": 12, "to": 19, "direction": "forward" },
+   { "name": "idle", "from": 0, "to": 12, "direction": "forward" },
+   { "name": "idle", "from": 0, "to": 12, "direction": "forward" },
+   { "name": "accel", "from": 13, "to": 13, "direction": "forward" },
    { "name": "Loop", "from": 14, "to": 18, "direction": "forward" }
   ],
   "layers": [
    { "name": "pallette", "opacity": 255, "blendMode": "normal" },
    { "name": "torso1", "opacity": 255, "blendMode": "normal" },
    { "name": "walk_torso", "opacity": 255, "blendMode": "normal" },
+   { "name": "walk_boobs", "opacity": 255, "blendMode": "normal" },
    { "name": "walk_legs", "opacity": 255, "blendMode": "normal" },
-   { "name": "arms walk", "opacity": 255, "blendMode": "normal" },
-   { "name": "head_walk", "opacity": 255, "blendMode": "normal" },
+   { "name": "walk_head", "opacity": 255, "blendMode": "normal" },
+   { "name": "walk clothes", "opacity": 255, "blendMode": "normal" },
+   { "name": "walk_arms", "opacity": 255, "blendMode": "normal" },
+   { "name": "walk_sleeve", "opacity": 255, "blendMode": "normal" },
+   { "name": "walk features", "opacity": 255, "blendMode": "normal" },
    { "name": "legs", "opacity": 255, "blendMode": "normal" },
    { "name": "shoes", "opacity": 255, "blendMode": "normal" },
    { "name": "undies", "opacity": 255, "blendMode": "normal" },

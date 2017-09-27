@@ -4,7 +4,7 @@ const pervert = function(ID,x,y,speed){
 
   this.sprite.position.y = GAMEWIN.floorHeight - (this.sprite.height + y);
 
-  level_test.layer.add(this.sprite);
+  levelContent.layer.add(this.sprite);
   this.alive =true;
   game.physics.arcade.enable(this.sprite, Phaser.Physics.ARCADE);
 

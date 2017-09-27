@@ -1,76 +1,79 @@
 // Create Girl Object
 const girl = new Object();
 
-// Create Girl Sprites
-girl.sprite = game.add.sprite(0,0, 'girl');
-girl.sit = game.make.sprite(0,0, 'girlSit');
+girl.create = function(){
+  // Create Girl Sprites
+  girl.sprite = game.add.sprite(0,0, 'girl');
+  girl.sit = game.make.sprite(0,0, 'girlSit');
 
-// Sit Sprite Invisible
-girl.sit.visible = false;
+  // Sit Sprite Invisible
+  girl.sit.visible = false;
 
-//Enable Physics
-game.physics.arcade.enable(girl.sprite, Phaser.Physics.ARCADE);
-
-
-// Create Group for All Girl Sprites Position Transformations
-// Add Sprites to Group
-girl.group = game.add.group();
-girl.group.add(girl.sit);
-girl.group.add(girl.sprite);
+  //Enable Physics
+  game.physics.arcade.enable(girl.sprite, Phaser.Physics.ARCADE);
 
 
-// Add Girl Group to Layer Collision Group
-level_test.layer.add(girl.group);
-
-// Set Girl Spawn Location
-girl.group.x = GAMEWIN.totalWidth / 2;
-girl.group.y = GAMEWIN.floorHeight - (girl.sprite.body.height + 30);
-// girl.group.y = GAMEWIN.floorHeight;
-
-// Set Girl MOVEMENT Properties
-girl.facing = 'right'
-girl.isJumping = false;
-girl.jumpHeight=750;
-girl.speed= 4.5;
-girl.boobs= false;
-girl.ableToFlash=false;
-
-// SCALE Girl Sprite
-girl.sprite.scale.setTo(game.spriteScale);
-girl.sit.scale.setTo(game.spriteScale);
-
-// Center Girl Anchor
-girl.sprite.anchor.setTo(.5,.5);
-girl.sit.anchor.setTo(.5,.5);
+  // Create Group for All Girl Sprites Position Transformations
+  // Add Sprites to Group
+  girl.group = game.add.group();
+  girl.group.add(girl.sit);
+  girl.group.add(girl.sprite);
 
 
-//Update COLLISION Properties
-girl.sprite.body.setSize(25, girl.sprite.body.height, 20, 0);
-girl.sprite.body.collideWorldBounds = true;
+  // Add Girl Group to Layer Collision Group
+  // levelContent.layer.add(girl.group);
 
-// Define Girl Animation JSON
-girl.json = game.cache.getJSON('girlJson');
-girl.json2 = game.cache.getJSON('girlJson2');
+  // Set Girl Spawn Location
+  girl.group.x = GAMEWIN.totalWidth / 2;
+  girl.group.y = GAMEWIN.floorHeight - (girl.sprite.body.height + 30);
+  // girl.group.y = GAMEWIN.floorHeight;
 
-// Converted Frame Arrays
-girl.girlIdleArray = frame_converter.getAnimArray(girl.json2,[0,1,2,3,4,5,6,7,8,9,10,11,12]);
-girl.girlWalkArray = frame_converter.getAnimArray(girl.json2,[14,15,16,17,18]);
-girl.girlAccelArray = frame_converter.getAnimArray(girl.json2,[13]);
-// girl.girlSlowAccelArray = frame_converter.getAnimArray(girl.json,[8,11]);
-// girl.girlDecelArray = frame_converter.getAnimArray(girl.json,[11,8]);
-// girl.girlBounceArray = frame_converter.getAnimArray(girl.json,[18,19,20,21,22,23,24]);
+  // Set Girl MOVEMENT Properties
+  girl.facing = 'right'
+  girl.isJumping = false;
+  girl.jumpHeight=750;
+  girl.speed= 4.5;
+  girl.boobs= false;
+  girl.ableToFlash=false;
 
-// Girl Animations
-girl.idle = girl.sprite.animations.add('idle', girl.girlIdleArray,/*FPS speed*/ 40,/*loop*/ true);
-girl.walk = girl.sprite.animations.add('walk',girl.girlWalkArray,/*FPS speed*/ 40,/*loop*/ true);
-girl.accel = girl.sprite.animations.add('accel', girl.girlAccelArray,/*FPS speed*/ 40);
-girl.decel = girl.sprite.animations.add('decel', girl.girlAccelArray,/*FPS speed*/ 40);
-// girl.bounce = girl.sprite.animations.add('bounce',girl.girlBounceArray, /*FPS speed*/ 40);
+  // SCALE Girl Sprite
+  girl.sprite.scale.setTo(game.spriteScale);
+  girl.sit.scale.setTo(game.spriteScale);
 
-// Add Animations
-// girl_animator.addJumpAnimation();
-girl_animator.addLeftAnimation();
-girl_animator.addRightAnimation();
+  // Center Girl Anchor
+  girl.sprite.anchor.setTo(.5,.5);
+  girl.sit.anchor.setTo(.5,.5);
+
+
+  //Update COLLISION Properties
+  girl.sprite.body.setSize(25, girl.sprite.body.height, 20, 0);
+  girl.sprite.body.collideWorldBounds = true;
+
+  // Define Girl Animation JSON
+  // girl.json = game.cache.getJSON('girlJson');
+  girl.json = game.cache.getJSON('girlJson');
+
+  // Converted Frame Arrays
+  girl.girlIdleArray = frame_converter.getAnimArray(girl.json,[0,1,2,3,4,5,6,7,8,9,10,11,12]);
+  girl.girlWalkArray = frame_converter.getAnimArray(girl.json,[14,15,16,17,18]);
+  girl.girlAccelArray = frame_converter.getAnimArray(girl.json,[13]);
+  // girl.girlSlowAccelArray = frame_converter.getAnimArray(girl.json,[8,11]);
+  // girl.girlDecelArray = frame_converter.getAnimArray(girl.json,[11,8]);
+  // girl.girlBounceArray = frame_converter.getAnimArray(girl.json,[18,19,20,21,22,23,24]);
+
+  // Girl Animations
+  girl.idle = girl.sprite.animations.add('idle', girl.girlIdleArray,/*FPS speed*/ 40,/*loop*/ true);
+  girl.walk = girl.sprite.animations.add('walk',girl.girlWalkArray,/*FPS speed*/ 40,/*loop*/ true);
+  girl.accel = girl.sprite.animations.add('accel', girl.girlAccelArray,/*FPS speed*/ 40);
+  girl.decel = girl.sprite.animations.add('decel', girl.girlAccelArray,/*FPS speed*/ 40);
+  // girl.bounce = girl.sprite.animations.add('bounce',girl.girlBounceArray, /*FPS speed*/ 40);
+
+  // Add Animations
+  // girl_animator.addJumpAnimation();
+  girl_animator.addLeftAnimation();
+  girl_animator.addRightAnimation();
+
+}; //END GIRL.CREATE()
 
 // Game Loop Update: Girl Jump
 girl.jumping = function () {
@@ -111,7 +114,7 @@ girl.walking = function () {
     if(girl.facing == 'left'){
       girl.group.x += girl.speed;
 
-     // level_test.bg1.tilePosition.x -= .9;
+     // levelContent.bg1.tilePosition.x -= .9;
     }
 
     if(girl.facing == 'right'){
@@ -137,9 +140,9 @@ girl.walking = function () {
     girl.group.x += girl.speed;
 
     /* ENVIRONMENT REPOSITIONING
-    level_test.bg1.tilePosition.x -= .9;
-    level_test.bg2.tilePosition.x -= 2.5;
-    level_test.table.position.x -= 5;
+    levelContent.bg1.tilePosition.x -= .9;
+    levelContent.bg2.tilePosition.x -= 2.5;
+    levelContent.table.position.x -= 5;
     for(i=0;i<enemies.length;i++){
       if(enemies[i].sprite.position.x > -100){
         enemies[i].sprite.position.x -= 5;
@@ -163,9 +166,9 @@ girl.walking = function () {
     girl.group.x -= girl.speed;
 
     /* ENVIRONMENT REPOSITIONING
-    level_test.bg1.tilePosition.x += .9;
-    level_test.bg2.tilePosition.x += 2.5;
-    level_test.table.position.x += 5;
+    levelContent.bg1.tilePosition.x += .9;
+    levelContent.bg2.tilePosition.x += 2.5;
+    levelContent.table.position.x += 5;
     for(i=0;i<enemies.length;i++){
       if(enemies[i].sprite.position.x < GAMEWIN.totalWidth + 100){
         enemies[i].sprite.position.x += 5;
